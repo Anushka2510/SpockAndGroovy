@@ -35,20 +35,20 @@ public class EmployeeController {
         return new ResponseEntity<>(customerList, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/employees/id/{employeeId}")
+    @GetMapping(value = "/employee/{employeeId}")
     public ResponseEntity<EmployeeDTO> getEmployeeDetails(@PathVariable @Min(value = 1, message = "{Employee EmployeeId invalid}") @Max(value = 100, message = "{Employee EmployeeId invalid}") Integer EmployeeId) throws ApplicationException {
         EmployeeDTO customer = employeeService.getEmployee(EmployeeId);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/employees/{employeeAadhar}")
+    @GetMapping(value = "/employee/{employeeAadhar}")
     public ResponseEntity<EmployeeDTO> getEmployeeDetailsByAadhar(@PathVariable String employeeAadhar) throws ApplicationException {
         EmployeeDTO customer = employeeService.getEmployee(employeeAadhar);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
 
-    @PutMapping(value = "/employees/{employeeAadhar}")
+    @PutMapping(value = "/employee/{employeeAadhar}")
     public ResponseEntity<Object> updateEmployee(@PathVariable String employeeAadhar, @Valid @RequestBody EmployeeUpdateDTO employee)
             throws ApplicationException {
         employeeService.updateEmployee(employeeAadhar, employee.getDepartment());

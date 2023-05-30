@@ -23,6 +23,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
     @Override
     public List<EmployeeDTO> getAllEmployees() throws ApplicationException {
         Iterable<Employee> employees = employeeRepository.findAll();
